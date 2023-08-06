@@ -5,6 +5,7 @@
 </head>
 <body> 
 <div class="page" id="home">
+<header class="header">
 <nav>
 <h2 class="logo">Port<span>folio</span></h2>
 <ul>
@@ -15,6 +16,7 @@
 <li><a href="#cont">Contact</a></li>
 </ul>
 </nav>
+</header>
 <div class="content">
 <h4 class="mn">Hello, my name is</h4>
 <h1>Nidhi <span>Burnwal</span></h1>
@@ -23,7 +25,7 @@
 </h2>
  <script>
     var typed = new Typed('#element', {
-      strings: ['I am a Bechlors Student','and a Learner...'],
+      strings: ['I am a Bechlors Student','and a New Learner...'],
       typeSpeed: 50,
     });
   </script>
@@ -42,7 +44,9 @@
 <h5>Bachelors <span>Student</span></h5>
 <p>I'm Nidhi Burnwal , currently a knowledge
  grabber in front end developer.
- Well mannered and determined.</p>
+ Well mannered and determined.
+ I'm searching myself to get collab
+ and meet company goals.</p>
  <a href="https://drive.google.com/file/d/1VNGSY3inT4hCFDQGn3CTAR4_ty3W1ovU/view?usp=drivesdk" target="_main" download class="btn btn2">Open My CV</a>
 </div>
 </div>
@@ -115,10 +119,10 @@
 </div>
 </header>
 <header class="contact-right">
-<form>
-<input type="text" name="Name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Your Email" required>
-<textarea name="Message" rows="8" placeholder="Your Message"></textarea>
+<form onsubmit="sendEmail(); reset(); return false;">
+<input type="text" id="Name" placeholder="Your Name" required>
+<input type="email" id="email" placeholder="Your Email" required>
+<textarea id="Message" rows="8" placeholder="Your Message"></textarea>
 <button type="submit" class="btn btn2">Submit</button>
 </form>
 </header>
@@ -128,7 +132,24 @@
 <p> Copyright © Nidhi Burnwal.All Rights Reserved<p>
 </div>
 </div>
-<section>
-<script src="script.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+function sendEmail(){
+Email.send({
+    Host : "smtp.gmail.com",
+    Username : "nidhiburnwal16may@gmail.com",
+    Password : "knriidthii2216",
+    To : 'nidhiburnwal938@gmail.com',
+    From : document.getElementById("email").value,
+    Subject : "New contact form enquiry",
+    Body : "Name: " + document.getElementById("Name").value
+			+"<br> Email: " + document.getElementById("email").value
+			+"<br> Message : " + document.getElementById("Message").value,
+}).then(
+  message => alert("Message Sent Successfully")
+);
+
+}
+</script>
 </body>
 </html>
